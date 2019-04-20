@@ -16,6 +16,9 @@ import com.revature.util.ConnectionUtil;
 
 public class PoneDAOImpl implements PoneDAO{
 	
+	
+	
+	
 	public int login(String user, String pass) {
 		int status =0;
 		try(Connection con = ConnectionUtil.getConnection()){
@@ -32,25 +35,25 @@ public class PoneDAOImpl implements PoneDAO{
 					 ResultSet rs2 = stmt.executeQuery();
 					 if (rs2.next()) {
 						int userId = rs2.getInt("EMP_ID");
-						
-						 if((myEmployees(userId).size())>0) {
+						return userId;
+/*						 if((myEmployees(userId).size())>0) {
 							 status = 3;
 							 return status; //employee has subordinates
 						 }else {
 							 status = 1;	//employee has no subordinates
 							 return status;
-						 }
 					 }
-				 }else {
+					 }
+	*/			 }else {
 					 status = 0; // bad password
 					 return status;
 				 }
 			}
-      } catch (SQLException e) {
+      }} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-  		return status = 2; //bad username
+  		return status = 0; //bad username
 	}
 	
 

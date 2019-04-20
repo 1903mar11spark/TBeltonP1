@@ -8,6 +8,7 @@ import com.revature.beans.Requests;
 public interface PoneDAO {
 
 	public int login(String uName, String pass);
+	
 	public void newRequest(Employees emp, float amt, String pic, String status, String cat, String details);
 	public ArrayList<Requests> myRequests(int userId);
 	public ArrayList<Requests> myPendingRequests(int userId);

@@ -11,6 +11,13 @@ public class Login {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Login( String uName, String pass) {
+		super();
+		this.uName = uName;
+		this.pass = pass;
+	}
+	
 	public Login(int id, String uName, String pass) {
 		super();
 		this.id = id;
