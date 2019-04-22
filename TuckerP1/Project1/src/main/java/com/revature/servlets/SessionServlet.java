@@ -10,6 +10,8 @@ import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.beans.Employees;
+import com.revature.dao.PoneDAOImpl;
+import com.revature.service.EmployeeService;
 
 /**
  * Servlet implementation class SessionServlet
@@ -18,6 +20,9 @@ import com.revature.beans.Employees;
 public class SessionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	
+	private EmployeeService es = new EmployeeService();
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -32,36 +37,22 @@ public class SessionServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String req= request.getParameter("reqTyp");
-		System.out.println(request.getParameter("reqTyp"));
 		HttpSession session = request.getSession(false);
-		System.out.println(session.getAttribute("userId"));
 		if ( session !=null && session.getAttribute("userId")!=null) {
 			try {
+				int userId = Integer.parseInt(session.getAttribute("userId").toString());
 				switch (req) {
 				case("viewInfo"):{
-					int userId = Integer.parseInt(session.getAttribute("userId").toString());
-					int boss = Integer.parseInt(session.getAttribute("boss").toString());
-					String fName = session.getAttribute("fName").toString();
-					String lName = session.getAttribute("lName").toString();
-					
-					Employees e = new Employees (userId, boss, fName, lName);
-					System.out.println(e);
-					String resp = new ObjectMapper().writeValueAsString(e);
-					
+					Employees e = (es.viewInfo(userId));
+					String resp = new ObjectMapper().writeValueAsString(e);					
 					response.getWriter().write(resp);
-					
-					System.out.println(resp);
 					break;
-				}default:response.getWriter().write("You broke this.");;
+				}default: break;
 				}
-			
-
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-		
-		
 	}
 
 	/**

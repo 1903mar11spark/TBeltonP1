@@ -17,16 +17,16 @@ function newRequest(){
 }
 
 function viewAll(){
-    input.innerHTML="all";
+    console.log("view all request");
  
 }
 
 function viewPending(){
-    input.innerHTML="pending";
+    console.log("view pending request");
 }
 
 function viewResolved(){
-    input.innerHTML="resolved";
+    console.log("view resolved request");
 }
 
 function viewInfo(){
@@ -66,7 +66,7 @@ function viewInfo(){
     }
 
 function updateInfo(){
-    input.innerHTML="update";
+    console.log("update info");
 }
 
 function logOut(){

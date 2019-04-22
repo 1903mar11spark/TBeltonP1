@@ -47,11 +47,8 @@ public class LoginServlet extends HttpServlet {
 	
 		if (e != null) {
 			
-			
 			session.setAttribute("userId", e.getId());
-			session.setAttribute("boss", e.getBoss());
-			session.setAttribute("fName", e.getfName());
-			session.setAttribute("lName", e.getlName());
+
 			session.setAttribute("problem", null);
 			
 			if(ls.isManager(e.getId())) {
