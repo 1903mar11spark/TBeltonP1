@@ -1,0 +1,17 @@
+@charset "ISO-8859-1";
+body{
+    align-content: center;
+
+	background-color: #666666;
+}
+h2{
+    font: #111ee1;
+}
+.accordion{
+    border: solid #111111 3px;
+}
+
+#form{
+    align-content: center;
+	width: 500px;
+}

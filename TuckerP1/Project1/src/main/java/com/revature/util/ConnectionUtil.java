@@ -16,39 +16,62 @@ public class ConnectionUtil {
 	
 	private static Connection connection = null;
 	private static Properties properties = null;
-	//this should not be static, if static will only create connection when class first loads
-	{
-		try {
-			properties = new Properties();
-			//properties.load(new FileInputStream("src/main/resources/connection.prop"));
-			
-			InputStream in = ConnectionUtil.class.getClassLoader().getResourceAsStream("connection.prop");
-			properties.load(in);
-			
-			
-			Class.forName(properties.getProperty(DB_DRIVER_CLASS));
-			connection = DriverManager.getConnection(properties.getProperty(DB_URL),properties.getProperty(DB_USERNAME) , properties.getProperty(DB_PASSWORD) );
-		} catch (ClassNotFoundException | SQLException | IOException e) {
-			e.printStackTrace();
-		}
-	}
 	
-	public static Connection getConnection(){
-		
-			try {
-				properties = new Properties();
-				//properties.load(new FileInputStream("src/main/resources/connection.prop"));
-				
-				InputStream in = ConnectionUtil.class.getClassLoader().getResourceAsStream("connection.prop");
-				properties.load(in);
-				
-				Class.forName(properties.getProperty(DB_DRIVER_CLASS));
-				connection = DriverManager.getConnection(properties.getProperty(DB_URL),properties.getProperty(DB_USERNAME) , properties.getProperty(DB_PASSWORD) );
-			} catch (ClassNotFoundException | SQLException | IOException e) {
-				e.printStackTrace();
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public static Connection getConnection() throws SQLException, IOException {
+		Properties prop = new Properties();
+		InputStream in = ConnectionUtil.class.getClassLoader().getResourceAsStream("connection.prop");
+		prop.load(in);
+		try {
+			   Class.forName("oracle.jdbc.driver.OracleDriver");
 			}
-		
-		
-		return connection;
+			catch(ClassNotFoundException ex) {
+			   System.out.println("Error: unable to load driver class!");
+			}
+		return DriverManager.getConnection(prop.getProperty("url"), prop.getProperty("username"),
+				prop.getProperty("password"));
 	}
+
 }
+	
+
+
+
+
+
+
+
+
+
+
+
+
+//	
+//	public static Connection getConnection(){
+//		
+//			try {
+//				properties = new Properties();
+//				//properties.load(new FileInputStream("Project1/src/main/resources/connection.prop"));
+//				
+//				InputStream in = ConnectionUtil.class.getClassLoader().getResourceAsStream("connection.prop");
+//				properties.load(in);
+//				
+//				Class.forName("java.sql.DriverManager");
+//				connection = DriverManager.getConnection(properties.getProperty(DB_URL),properties.getProperty(DB_USERNAME) , properties.getProperty(DB_PASSWORD) );
+//
+//			} catch (ClassNotFoundException | SQLException | IOException e) {
+//				e.printStackTrace();
+//			}
+//		
+//		
+//		return connection;
+//	}}

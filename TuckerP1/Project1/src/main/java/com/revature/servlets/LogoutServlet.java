@@ -1,24 +1,24 @@
 package com.revature.servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class EmployeeServlet
+ * Servlet implementation class logoutServlet
  */
-
-public class EmployeeServlet extends HttpServlet {
+public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EmployeeServlet() {
+    public LogoutServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,21 +27,27 @@ public class EmployeeServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		
-		request.getRequestDispatcher("Employee.html").forward(request, response);
+		request.getRequestDispatcher("login.html").include(request, response);
+		HttpSession session = request.getSession(false); 
+		if (session != null) {
+			System.out.println("invalidate");
+			session.invalidate();
+			
+		}
+	
+		
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		HttpSession session = request.getSession();
-		String req = request.getParameter("");
-		
-		
-		
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }
+

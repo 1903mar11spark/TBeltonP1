@@ -12,15 +12,17 @@ public class LoginService {
 		Employees e =null;
 		String pass = log.getPass();
 		String user =log.getuName();
-		if (pd.login( user,pass)!=0) {
-			int userId = pd.login(user, pass);
+		int userId = pd.login(user, pass);
+		if (userId!=0) {
 			e = pd.myInfo(userId);
 		}return e;
 		
 	}
 	
 	public boolean isManager(int id) {
-		if(pd.myEmployees(id).size()>0) {
+		int x =pd.myEmployees(id).size();
+		
+		if(x>0) {
 			return true;
 		}else return false;
 	}

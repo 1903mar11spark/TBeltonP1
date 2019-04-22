@@ -1,24 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="./Styles/login.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
+
 <meta charset="ISO-8859-1">
 <title>login</title>
 
 </head>
 <body>
-	<div class="display">
-		<form action="login" method="post">
-			<fieldset>
-				<legend>username:</legend>
-				<input required name="username"/>
+	<div class="jumbotron jumbotron-fluid">
+		<div class="container">
+		  <h1 class="display-4">SPECTRE</h1>
+		  <p class="lead">Welcome to the SPecial Executive for Counter-inteligence
+		  , Terrorism, Revenge, and Extortion. 
+		  </p>
+		</div>
+	  </div>
+
+	  <form action="login" method="post" id="form">
+			<div class="form-group">
+				<fieldset>
+			  <label for="exampleInputEmail1">Email address</label>
+			  <input name="username" class="form-control" id="username" placeholder="Enter Useraname">
 			</fieldset>
+			</div>
 			<fieldset>
-				<legend>password:</legend>
-				<input required type="password" name="password"/>
-			</fieldset>
-			<br> 
-			<input type="submit" value="login">
-		</form>
-	</div>
+			<div class="form-group">
+			  <label for="exampleInputPassword1">Password</label>
+			  <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+			</div>
+		</fieldset>
+			<input type="submit" class="btn btn-primary" value="login">
+		  </form>
+
+
 </body>
 </html>

@@ -1,10 +1,89 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="./Styles/login.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script src="./Scripts/Henchmen.js"></script>
+
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
-employee page
+        <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                  <h1 class="display-4">SPECTRE</h1>
+                  <p class="lead">Welcome to the henchmen page.
+                  </p>
+                </div>
+              </div>
+
+        <div class="row">
+            <div class="col col-sm-3">
+              <div class="accordion" id="accordionExample">
+                    <div class="card">
+                      <div class="card-header" id="headingOne">
+                        <h2>
+                          Henchmen Menu
+                        </h2>
+                      </div>
+                    <div class="card">
+                      <div class="card-header" id="headingTwo">
+                        <h2 class="mb-0">
+                          <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Reimbursment Requests
+                          </button>
+                        </h2>
+                      </div>
+                      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <div class="btn-group-vertical">
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                            <button type="button" class="btn btn-primary" id="new">Create New Request</button>
+                                            <button type="button" class="btn btn-primary" id="all">View All Requests</button>
+                                            <button type="button" class="btn btn-primary" id="pending">View Pending Requests</button>
+                                            <button type="button" class="btn btn-primary" id="resolved">View Resolved Requests</button>
+                                           
+                                          </div>
+                                  </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <div class="card-header" id="headingThree">
+                        <h2 class="mb-0">
+                          <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Henchmen Information
+                          </button>
+                        </h2>
+                      </div>
+                      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <div class="btn-group-vertical">
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <button type="button" class="btn btn-primary" id="info">View Information</button>
+                                    <button type="button" class="btn btn-primary" id="update">Update Information</button>
+                                    <button type="button" class="btn btn-primary" id="logout">Log Out</button>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+            </div>
+
+            <div class="col col-sm-9" id="id">
+                   where the results of the selection will display 
+            </div>
+
+
+        
 </body>
 </html>

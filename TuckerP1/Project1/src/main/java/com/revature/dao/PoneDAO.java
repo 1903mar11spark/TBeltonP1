@@ -10,17 +10,17 @@ public interface PoneDAO {
 	public int login(String uName, String pass);
 	
 	public void newRequest(Employees emp, float amt, String pic, String status, String cat, String details);
-	public ArrayList<Requests> myRequests(int userId);
-	public ArrayList<Requests> myPendingRequests(int userId);
+	public ArrayList<Requests> myRequests(int userId);											//works
+	public ArrayList<Requests> myPendingRequests(int userId);									//works
 	public ArrayList<Requests> myResolvedRequests(int userId);
-	public Employees myInfo(int userId);
+	public Employees myInfo(int userId);														//works
 	public void updateMyInfo(String newFName, String newLName, int userId);
 	
-	public ArrayList<Requests> pendingRequests(int userId);
+	public ArrayList<Requests> pendingRequests(int userId);										//works
 	public ArrayList<String> viewReciepts(int userId);
 	public ArrayList<Requests> resolvedRequests(int userId);
-	public ArrayList<Employees> myEmployees(int userId);
-	public ArrayList<Requests> thierRequests(int userId, int id);
+	public ArrayList<Employees> myEmployees(int userId);										//works
+	public ArrayList<Requests> thierRequests(int userId, int id);								//works
 	public void resolveRequests(int reqId);
 	
 	
