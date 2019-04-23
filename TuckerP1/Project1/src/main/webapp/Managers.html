@@ -9,6 +9,8 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script src="./Scripts/Henchmen.js"></script>
+<script src="./Scripts/Manager.js"></script>
 
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -65,9 +67,9 @@
                         <div class="card-body">
                             <div class="btn-group-vertical">
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn btn-primary" id="new">View Information</button>
-                                    <button type="button" class="btn btn-primary" id="all">Update Information</button>
-                                    <button type="button" class="btn btn-primary" id="pending">Log Out</button>
+                                    <button type="button" class="btn btn-primary" id="info">View Information</button>
+                                    <button type="button" class="btn btn-primary" id="update">Update Information</button>
+                                    <button type="button" class="btn btn-primary" id="logout">Log Out</button>
                                 </div>
                             </div>
                         </div>
@@ -84,9 +86,11 @@
                             <div class="card-body">
                                 <div class="btn-group-vertical">
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                        <button type="button" class="btn btn-primary" id="new">View Information</button>
-                                        <button type="button" class="btn btn-primary" id="all">Update Information</button>
-                                        <button type="button" class="btn btn-primary" id="pending">Log Out</button>
+                                        <button type="button" class="btn btn-primary" id="pend">Requets Pending</button>
+                                        <button type="button" class="btn btn-primary" id="reso">Requests Resolved</button>
+                                        <button type="button" class="btn btn-primary" id="mine">View My Henchmen</button>
+                                        <button type="button" class="btn btn-primary" id="thiers">All Thier Requests</button>
+                                        <button type="button" class="btn btn-primary" id="resolve">Resolve Requests</button>
                                     </div>
                                 </div>
                             </div>
@@ -95,11 +99,10 @@
                   </div>
                 </div>
 
-            </div>
-
-            <div class="col col-sm-9">
+            <div class="col col-sm-9" id="id">
                    where the results of the selection will display 
             </div>
+          </div>
 
 
         

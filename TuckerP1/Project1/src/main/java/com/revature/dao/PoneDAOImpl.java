@@ -61,15 +61,29 @@ public class PoneDAOImpl implements PoneDAO{
 	
 
 	@Override
-	public void newRequest(Employees emp, float amt, String pic, String status, String cat, String details) {
-		// create Stored Procedure in DB
+	public void newRequest(Employees emp, float amt, String cat, String details) {
+		try (Connection con = ConnectionUtil.getConnection()){
+			
+			String sql = "INSERT INTO REQUEST  ( EMP_ID, AMT, CATAGORY, DETAILS)" + 
+					"VALUES (?,?,?,?)";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setInt(1, emp.getId());
+			stmt.setFloat(2, amt);
+			stmt.setString(3, cat);
+			stmt.setString(4, details);
+			stmt.executeUpdate();
 		
+		}
+			catch(SQLException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	}
 
 	@Override
 	public ArrayList<Requests> myRequests(int userId) {
 		ArrayList<Requests> list = new ArrayList<Requests>();
-		
+	
 		
 		try (Connection con = ConnectionUtil.getConnection()){
 			//remember to change EMT to AMT in the DB
@@ -134,7 +148,7 @@ public class PoneDAOImpl implements PoneDAO{
 		
 		try (Connection con = ConnectionUtil.getConnection()){
 			//remember to change EMT to AMT in the DB
-			String sql = "SELECT * FROM REQUEST WHERE EMP_ID = ? AND STATUS='Resolved";
+			String sql = "SELECT * FROM REQUEST WHERE EMP_ID = ? AND STATUS!='Pending'";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setLong(1, userId);
 			ResultSet rs = stmt.executeQuery();
@@ -182,16 +196,17 @@ public class PoneDAOImpl implements PoneDAO{
 	}
 
 	@Override
-	public void updateMyInfo(String newFName, String newLName,int userId) {
+	public void updateMyInfo(String newFName, String newLName, int userId) {
 		try (Connection con = ConnectionUtil.getConnection()){
-			String sql = "UPDATE EMPLOYEES "
-					+ "SET FIRST_NAME = ? AND LAST_NAME = ? WHERE ACCOUNT_ID = ?";
-			
+			String sql = "UPDATE EMPLOYEES SET FIRST_NAME = ?, LAST_NAME = ? WHERE EMP_ID = ?";
+			System.out.println(newFName+newLName);
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, newFName);
 			stmt.setString(2, newLName);
 			stmt.setInt(3, userId);
-			ResultSet rs = stmt.executeQuery();
+			System.out.println("pone 193");
+			//ResultSet rs = stmt.executeQuery();
+			stmt.executeUpdate();
 		} catch (SQLException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -264,20 +279,21 @@ public class PoneDAOImpl implements PoneDAO{
 				
 				int empId = rs.getInt("EMP_ID");
 				
-				String sql2 = "SELECT * FROM REQUEST WHERE EMP_ID = ? AND STATUS='Resolved"; 
+				String sql2 = "SELECT * FROM REQUEST WHERE EMP_ID = ? AND STATUS!='Pending'"; 
 				//get all of their resolved requests
 				PreparedStatement stmt2 = con.prepareStatement(sql2);
 				stmt2.setLong(1, empId);
-				ResultSet rs2 = stmt.executeQuery(); 
+				ResultSet rs2 = stmt2.executeQuery(); 
 				while (rs2.next()) {
 					int req_id = rs2.getInt("REQ_ID");
+					int id = rs2.getInt("EMP_ID");
 					float amt = rs2.getFloat("AMT");
 					String pic= rs2.getString("IMAGE");
 					String status = rs2.getString("STATUS");
 					String cat = rs2.getString("CATAGORY");
 					String detail = rs2.getString("DETAILS");
 					
-					list.add(new Requests (req_id, new Employees(), amt, pic, status, cat, detail ));
+					list.add(new Requests (req_id, myInfo(id), amt, pic, status, cat, detail ));
 
 				}
 		
