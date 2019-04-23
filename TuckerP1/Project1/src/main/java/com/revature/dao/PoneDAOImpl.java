@@ -360,12 +360,20 @@ public class PoneDAOImpl implements PoneDAO{
 	}
 
 	@Override
-	public void resolveRequests(int reqId) {
+	public void resolveRequests(int reqId, String status) {
 		
-		//pass in the new request status (either approved or denied)?
-		
-		// update request status where REQ_ID = reqId
-		
+		try (Connection con = ConnectionUtil.getConnection()){
+			String sql = "UPDATE REQUEST SET STATUS = ? WHERE REQ_ID = ?";
+System.out.println("pone 367");
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, status);
+			stmt.setInt(2, reqId);
+System.out.println("pone 371");
+			stmt.executeUpdate();
+		} catch (SQLException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	

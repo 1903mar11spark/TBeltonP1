@@ -21,7 +21,7 @@ public interface PoneDAO {
 	public ArrayList<Requests> resolvedRequests(int userId);
 	public ArrayList<Employees> myEmployees(int userId);										//works
 	public ArrayList<Requests> thierRequests(int userId, int id);								//works
-	public void resolveRequests(int reqId);
+	public void resolveRequests(int reqId, String status);
 	
 	
 }

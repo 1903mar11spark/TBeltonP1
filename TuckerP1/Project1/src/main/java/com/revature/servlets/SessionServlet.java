@@ -106,6 +106,29 @@ public class SessionServlet extends HttpServlet {
 					String resp = new ObjectMapper().writeValueAsString(list);
 					response.getWriter().write(resp);
 					break;
+				}case("viewAllRequests"):{
+					String amt = request.getParameter("id");
+					int id;
+					try{
+						id = Integer.valueOf(amt);
+						ArrayList<Requests> list = ms.thiers(userId,id);
+						String resp = new ObjectMapper().writeValueAsString(list);
+						response.getWriter().write(resp);
+						break;
+					}catch(Exception e) {
+						e.printStackTrace();
+					}
+				}case("updateRequest"):{
+					
+					String res = request.getParameter("status");
+					String amt = request.getParameter("id");
+					int id;
+					try{
+						id = Integer.valueOf(amt);
+						ms.resolve(id, res);
+				}catch(Exception e) {
+					e.printStackTrace();
+				}break;
 				}
 				default: {
 					System.out.println("nope");

@@ -27,5 +27,9 @@ public class ManagerService {
 		ArrayList<Requests> list =pd.thierRequests(userId, id);
 		return list;
 	}
+	
+	public void resolve(int reqId, String status) {
+		pd.resolveRequests(reqId, status);
+	}
 
 }
