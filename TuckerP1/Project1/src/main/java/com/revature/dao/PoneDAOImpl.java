@@ -364,19 +364,15 @@ public class PoneDAOImpl implements PoneDAO{
 		
 		try (Connection con = ConnectionUtil.getConnection()){
 			String sql = "UPDATE REQUEST SET STATUS = ? WHERE REQ_ID = ?";
-System.out.println("pone 367");
+
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, status);
 			stmt.setInt(2, reqId);
-System.out.println("pone 371");
+
 			stmt.executeUpdate();
 		} catch (SQLException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-
-	
-	
-	
+	}	
 }

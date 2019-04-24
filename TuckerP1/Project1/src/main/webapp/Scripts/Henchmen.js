@@ -15,23 +15,68 @@ window.onload = function() {
 function displayRequests(){
     let table=document.createElement("table");
     table.id="table";
+    table.className="table";
     document.getElementById("id").appendChild(table);
 
+    let header=document.createElement("thead");
+    header.id="header";
+    document.getElementById("table").appendChild(header);
+
+    let head=document.createElement("tr");
+    head.id="head";
+    document.getElementById("header").appendChild(head);
+
+    let heading=document.createElement("th");
+    heading.scope="col";
+    heading.innerHTML="Request ID";
+    document.getElementById("head").appendChild(heading);
+
+    let heading2=document.createElement("th");
+    heading2.scope="col";
+    heading2.innerHTML="Amount";
+    document.getElementById("head").appendChild(heading2);
+
+    let heading3=document.createElement("th");
+    heading3.scope="col";
+    heading3.innerHTML="Image";
+    document.getElementById("head").appendChild(heading3);
+
+    let heading4=document.createElement("th");
+    heading4.scope="col";
+    heading4.innerHTML="Status";
+    document.getElementById("head").appendChild(heading4);
+
+    let heading5=document.createElement("th");
+    heading5.scope="col";
+    heading5.innerHTML="Catagory";
+    document.getElementById("head").appendChild(heading5);
+
+    let heading6=document.createElement("th");
+    heading6.scope="col";
+    heading6.innerHTML="Detail";
+    document.getElementById("head").appendChild(heading6);
+
+    let tbody=document.createElement("tbody");
+    tbody.id="tbody";
+    document.getElementById("table").appendChild(tbody);
+
+
+console.log(user);
     for(let i=0;i<user.length;i++){
 
         let row=document.createElement("tr");
         row.id="row"+i;
-        row.class=row;
-        document.getElementById("table").appendChild(row);
+        row.className="row";
+        document.getElementById("tbody").appendChild(row);
 
         let rId=document.createElement("td");
         rId.className="rId"
-        rId.innerHTML="Request Id: " +user[i].req_id;
+        rId.innerHTML=user[i].req_id;
         document.getElementById("row"+i).appendChild(rId);
     
         let amt=document.createElement("td");
         amt.className="amt"
-        amt.innerText="Amount: "+user[i].amt;
+        amt.innerText=user[i].amt;
         document.getElementById("row"+i).appendChild(amt);
         
         let pic=document.createElement("td");
@@ -67,67 +112,81 @@ function newRequest(){
         id.removeChild(id.firstChild);
     }
 
-    let form=document.createElement("newRequest");
+    let form=document.createElement("form");
     form.id="form";     
     form.action="update";
     form.method="post"
     document.getElementById("id").appendChild(form);
 
-    let fieldset=document.createElement("fieldset");
-    fieldset.id="fieldset";
-    document.getElementById("form").appendChild(fieldset);
+    let divClass=document.createElement("div")
+    divClass.id="divClass";
+    divClass.className="form-group"
+    document.getElementById("form").appendChild(divClass);
 
-    let fieldset2=document.createElement("fieldset");
-    fieldset2.id="fieldset2";
-    document.getElementById("form").appendChild(fieldset2);
+    let divClass2=document.createElement("div")
+    divClass2.id="divClass2";
+    divClass2.className="form-group"
+    document.getElementById("form").appendChild(divClass2);
 
-    let fieldset3=document.createElement("fieldset");
-    fieldset3.id="fieldset3";
-    document.getElementById("form").appendChild(fieldset3);
+    let divClass3=document.createElement("div")
+    divClass3.id="divClass3";
+    divClass3.className="form-group"
+    document.getElementById("form").appendChild(divClass3);
 
     let label=document.createElement("label");
     label.id="label";
     label.innerHTML="Request Amount";
-    document.getElementById("fieldset").appendChild(label);
+    document.getElementById("divClass").appendChild(label);
 
-    let label2=document.createElement("select");
+    let label2=document.createElement("label");
     label2.id="label2";
-    label2.innerHTML="Request Catagory";
-    document.getElementById("fieldset2").appendChild(label2);
+    label2.innerHTML="Request Type";
+    document.getElementById("divClass2").appendChild(label2);    
+
+    let select=document.createElement("select");
+    select.id="select";
+    select.className="form-control";
+    select.innerHTML="Request Catagory";
+    document.getElementById("divClass2").appendChild(select);
     //add drop down to this element
 
                 let opt2 = document.createElement("option");
                 opt2.innerText = "Weapons";
-            document.getElementById("label2").appendChild(opt2);
+            document.getElementById("select").appendChild(opt2);
 
             let opt3 = document.createElement("option");
             opt3.innerText = "Construction";
-            document.getElementById("label2").appendChild(opt3);
+            document.getElementById("select").appendChild(opt3);
 
             let opt1 = document.createElement("option");
             opt1.innerText = "Medical";
-           document.getElementById("label2").appendChild(opt1);
-    
-    
+           document.getElementById("select").appendChild(opt1);
 
+           let opt4 = document.createElement("option");
+           opt4.innerText = "Other";
+          document.getElementById("select").appendChild(opt4);
+    
     let label3=document.createElement("label");
     label3.id="label3";
     label3.innerHTML="Request Details";
-    document.getElementById("fieldset3").appendChild(label3);
+    document.getElementById("divClass3").appendChild(label3);
 
     let input=document.createElement("input");
     input.id="input";
     input.name="amt";
-    document.getElementById("fieldset").appendChild(input);
+    input.className="form-control"
+    document.getElementById("divClass").appendChild(input);
    
     let input2=document.createElement("input");
     input2.id="input2";
     input2.name="detail";
-    document.getElementById("fieldset3").appendChild(input2);
+    input2.className="form-control"
+    document.getElementById("divClass3").appendChild(input2);
     
-    let submit=document.createElement("input");
+    let submit=document.createElement("button");
     submit.type="submit";
-    submit.value="Send Request";
+    submit.innerHTML="Send Request";
+    submit.className="btn btn-primary";
     document.getElementById("form").appendChild(submit);
    
     submit.onclick= function(){
@@ -213,27 +272,70 @@ function viewInfo(){
                 id.removeChild(id.firstChild);
             }
 
-			user = data;
-            let userId=document.createElement("p");
-            userId.id="userId";
-            document.getElementById("id").appendChild(userId);
+            user = data;
 
-            let boss=document.createElement("p");
-            boss.id="boss";
-            document.getElementById("id").appendChild(boss)
+            let vInfo=document.createElement("div");
+            vInfo.id="vInfo";
+            vInfo.className="col col-sm-6";
+            document.getElementById("id").appendChild(vInfo);
 
-            let firstName=document.createElement("p");
-            firstName.id="firstname";
-            document.getElementById("id").appendChild(firstName);
-          
-            let lastName=document.createElement("p");
-            lastName.id="lastname";
-            document.getElementById("id").appendChild(lastName);
+            let table=document.createElement("table");
+            table.id="table";
+            table.className="table";
+            document.getElementById("vInfo").appendChild(table);
 
-			userId.innerHTML = "userId: "+user.id;
-			firstName.innerHTML = "firstname: "+user.fName;
-			lastName.innerHTML = "lastname: "+user.lName;
-			boss.innerHTML = "Boss ID: " +user.boss;
+            let userR=document.createElement("tr");
+            userR.id="userR";
+            document.getElementById("table").appendChild(userR);
+
+            let bossR=document.createElement("tr");
+            bossR.id="bossR";
+            document.getElementById("table").appendChild(bossR);
+
+            let fNameR=document.createElement("tr");
+            fNameR.id="fNameR";
+            document.getElementById("table").appendChild(fNameR);
+
+            let lNameR=document.createElement("tr");
+            lNameR.id="lNameR";
+            document.getElementById("table").appendChild(lNameR);
+
+            let user1=document.createElement("th");
+            user1.innerHTML="User ID";
+            user1.scope="row";
+            document.getElementById("userR").appendChild(user1);
+
+            let user2=document.createElement("td");
+            user2.innerHTML=user.id;
+            document.getElementById("userR").appendChild(user2);
+
+            let boss1=document.createElement("th");
+            boss1.innerHTML="Boss ID";
+            boss1.scope="row";
+            document.getElementById("bossR").appendChild(boss1);
+
+            let boss2=document.createElement("td");
+            boss2.innerHTML=user.boss;
+            document.getElementById("bossR").appendChild(boss2);
+
+            let fname1=document.createElement("th");
+            fname1.innerHTML="First Name";
+            fname1.scope="row";
+            document.getElementById("fNameR").appendChild(fname1);
+
+            let fname2=document.createElement("td");
+            fname2.innerHTML=user.fName;
+            document.getElementById("fNameR").appendChild(fname2);
+
+            let lname1=document.createElement("th");
+            lname1.innerHTML="Last Name";
+            lname1.scope="row";
+            document.getElementById("lNameR").appendChild(lname1);
+
+            let lname2=document.createElement("td");
+            lname2.innerHTML=user.lName;
+            document.getElementById("lNameR").appendChild(lname2);
+
 		});
     }
 
@@ -244,45 +346,50 @@ function updateInfo(){
         id.removeChild(id.firstChild);
     }
 
-    let form=document.createElement("login");
+    let form=document.createElement("form");
     form.id="form";     
     form.action="update";
     form.method="post"
     document.getElementById("id").appendChild(form);
 
-    let fieldset=document.createElement("fieldset");
-    fieldset.id="fieldset";
-    document.getElementById("form").appendChild(fieldset);
+    let divClass=document.createElement("div");
+    divClass.id="divClass";
+    divClass.className="form-group"
+    document.getElementById("form").appendChild(divClass);
 
-    let fieldset2=document.createElement("fieldset");
-    fieldset2.id="fieldset2";
-    document.getElementById("form").appendChild(fieldset2);
+    let divClass2=document.createElement("div");
+    divClass2.id="divClass2";
+    divClass2.className="form-group"
+    document.getElementById("form").appendChild(divClass2);
 
     let label=document.createElement("label");
     label.id="label";
     label.innerHTML="New First Name";
-    document.getElementById("fieldset").appendChild(label);
+    document.getElementById("divClass").appendChild(label);
 
     let label2=document.createElement("label");
     label2.id="label2";
     label2.innerHTML="New Last Name";
-    document.getElementById("fieldset2").appendChild(label2);
+    document.getElementById("divClass2").appendChild(label2);
 
     let input=document.createElement("input");
     input.id="input";
     input.name="newFName";
-    document.getElementById("fieldset").appendChild(input);
+    input.className="form-control"
+    document.getElementById("divClass").appendChild(input);
     fname=document.getElementById("input").value;
 
     let input2=document.createElement("input");
     input2.id="input2";
     input2.name="newLName";
-    document.getElementById("fieldset2").appendChild(input2);
+    input2.className="form-control"
+    document.getElementById("divClass2").appendChild(input2);
     lname=document.getElementById("input2").value;
 
-    let submit=document.createElement("input");
+    let submit=document.createElement("button");
     submit.type="submit";
-    submit.value="update";
+    submit.innerHTML="Update";
+    submit.className="btn btn-primary";
     document.getElementById("form").appendChild(submit);
    
     submit.onclick= function(){
@@ -309,12 +416,10 @@ function logOut(){
    logout.id="logouts";
    document.getElementById("id").appendChild(logout);
 
-   let yes = document.createElement('input');
-   yes.type="submit";
-   yes.value="logout";
-   yes.class="btn btn-primary";
-   yes.id="yes";
-   document.getElementById("logouts").appendChild(yes);
-    
+   let submit=document.createElement("button");
+   submit.type="submit";
+   submit.innerHTML="Logout";
+   submit.className="btn btn-primary";
+   document.getElementById("logouts").appendChild(submit);
 
 }

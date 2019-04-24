@@ -4,9 +4,7 @@ body{
 
 	background-color: #666666;
 }
-h2{
-    font: #111ee1;
-}
+
 .accordion{
     border: solid #111111 3px;
 }
@@ -15,15 +13,19 @@ h2{
     align-content: center;
 	width: 500px;
 }
-#table{
-    padding: 5px;
-}
 
 .row{
     padding: 5px;
 }
-td{
-    margin: 10px;
-    border: solid #3333dd;
-    padding: 10px;
+
+table{
+    padding:5px;
+}
+th{
+    font-weight: bold;
+    color: #21214d 
+}
+#logouts{
+    padding: 5px;
+    margin: 5 px;
 }

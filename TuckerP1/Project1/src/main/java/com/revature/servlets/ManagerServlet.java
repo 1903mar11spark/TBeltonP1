@@ -6,6 +6,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.revature.service.LoginService;
 
 /**
  * Servlet implementation class ManagerServlet
@@ -14,6 +17,8 @@ import javax.servlet.http.HttpServletResponse;
 public class ManagerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+
+	private LoginService ls = new LoginService();
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -26,6 +31,18 @@ public class ManagerServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+//		HttpSession session = request.getSession(false);
+//		int userId = Integer.parseInt(session.getAttribute("userId").toString());
+//		
+//		if(ls.isManager(userId)) {
+//			response.sendRedirect("manager"); 
+//		}else {
+//			response.sendRedirect("employee");
+//		}
+//		
+		
+		//check if manager
 		request.getRequestDispatcher("Managers.html").forward(request, response);
 	}
 
