@@ -26,6 +26,11 @@ function displayRequests(){
     head.id="head";
     document.getElementById("header").appendChild(head);
 
+    let empty=document.createElement("th");
+    empty.scope="col";
+    empty.innerHTML="";
+    document.getElementById("head").appendChild(empty);
+
     let heading=document.createElement("th");
     heading.scope="col";
     heading.innerHTML="Request ID";
@@ -60,8 +65,6 @@ function displayRequests(){
     tbody.id="tbody";
     document.getElementById("table").appendChild(tbody);
 
-
-console.log(user);
     for(let i=0;i<user.length;i++){
 
         let row=document.createElement("tr");
@@ -114,7 +117,6 @@ function newRequest(){
 
     let form=document.createElement("form");
     form.id="form";     
-    form.action="update";
     form.method="post"
     document.getElementById("id").appendChild(form);
 
@@ -148,7 +150,6 @@ function newRequest(){
     select.className="form-control";
     select.innerHTML="Request Catagory";
     document.getElementById("divClass2").appendChild(select);
-    //add drop down to this element
 
                 let opt2 = document.createElement("option");
                 opt2.innerText = "Weapons";
@@ -184,7 +185,7 @@ function newRequest(){
     document.getElementById("divClass3").appendChild(input2);
     
     let submit=document.createElement("button");
-    submit.type="submit";
+    submit.type="button";
     submit.innerHTML="Send Request";
     submit.className="btn btn-primary";
     document.getElementById("form").appendChild(submit);
@@ -286,18 +287,22 @@ function viewInfo(){
 
             let userR=document.createElement("tr");
             userR.id="userR";
+            userR.className="eRow";
             document.getElementById("table").appendChild(userR);
 
             let bossR=document.createElement("tr");
             bossR.id="bossR";
+            bossR.className="eRow";
             document.getElementById("table").appendChild(bossR);
 
             let fNameR=document.createElement("tr");
             fNameR.id="fNameR";
+            fNameR.className="eRow";
             document.getElementById("table").appendChild(fNameR);
 
             let lNameR=document.createElement("tr");
             lNameR.id="lNameR";
+            lNameR.className="eRow";
             document.getElementById("table").appendChild(lNameR);
 
             let user1=document.createElement("th");
@@ -348,7 +353,6 @@ function updateInfo(){
 
     let form=document.createElement("form");
     form.id="form";     
-    form.action="update";
     form.method="post"
     document.getElementById("id").appendChild(form);
 

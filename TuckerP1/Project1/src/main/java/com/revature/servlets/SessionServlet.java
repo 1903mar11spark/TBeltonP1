@@ -109,15 +109,14 @@ public class SessionServlet extends HttpServlet {
 				}case("viewAllRequests"):{
 					String amt = request.getParameter("id");
 					int id;
-					try{
+					try{ 
 						id = Integer.valueOf(amt);
 						ArrayList<Requests> list = ms.thiers(userId,id);
 						String resp = new ObjectMapper().writeValueAsString(list);
 						response.getWriter().write(resp);
-						break;
 					}catch(Exception e) {
 						e.printStackTrace();
-					}
+					}break;
 				}case("updateRequest"):{
 					
 					String res = request.getParameter("status");

@@ -32,18 +32,15 @@ public class ManagerServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-//		HttpSession session = request.getSession(false);
-//		int userId = Integer.parseInt(session.getAttribute("userId").toString());
-//		
-//		if(ls.isManager(userId)) {
-//			response.sendRedirect("manager"); 
-//		}else {
-//			response.sendRedirect("employee");
-//		}
-//		
+		HttpSession session = request.getSession(false);
+		int userId = Integer.parseInt(session.getAttribute("userId").toString());
 		
-		//check if manager
-		request.getRequestDispatcher("Managers.html").forward(request, response);
+		if(ls.isManager(userId)) {
+			request.getRequestDispatcher("Managers.html").forward(request, response);
+		}else {
+			response.sendRedirect("employee");
+		}
+		
 	}
 
 	/**

@@ -4,16 +4,9 @@ body{
 
 	background-color: #666666;
 }
-
-.accordion{
-    border: solid #111111 3px;
+form{
+    width: 200px;
 }
-
-#form{
-    align-content: center;
-	width: 500px;
-}
-
 .row{
     padding: 5px;
 }
@@ -22,10 +15,18 @@ table{
     padding:5px;
 }
 th{
+    text-align: center;
     font-weight: bold;
     color: #21214d 
 }
 #logouts{
     padding: 5px;
     margin: 5 px;
+}
+#id{
+	align-content: center;
+}
+.eRow{
+    padding: 5px;
+    border-bottom: solid #333333 2px;
 }
