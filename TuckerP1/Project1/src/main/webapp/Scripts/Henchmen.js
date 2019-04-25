@@ -192,13 +192,13 @@ function newRequest(){
    
     submit.onclick= function(){
 
-        let cat = document.getElementById("label2");
-        label2 = cat.options[cat.selectedIndex].value;
+        let cat = document.getElementById("select");
+        select = cat.options[cat.selectedIndex].value;
 
         amt=document.getElementById("input").value;
         detail=document.getElementById("input2").value;
         console.log("amt "+amt+" detail: "+detail+" cat "+label2);
-        fetch("http://localhost:8084/Project1/session?reqTyp=newRequest&amt="+amt+"&cat="+label2+"&detail="+detail)
+        fetch("http://localhost:8084/Project1/session?reqTyp=newRequest&amt="+amt+"&cat="+select+"&detail="+detail)
         viewAll();
     }
 

@@ -57,7 +57,7 @@ public class LoginServlet extends HttpServlet {
 			}else {
 				
 				response.sendRedirect("employee");
-				//this page redirects to the standard emplyee page which does nto exist yet
+				//this page redirects to the standard employee page which does not exist yet
 			}
 			
 		}else {
